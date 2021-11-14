@@ -1,4 +1,5 @@
-import './index.css';
+// eslint-disable-next-line
+import css from './index.css';
 import Uploader from './uploader';
 import Icon from './svg/toolbox.svg';
 import FileIcon from './svg/standard.svg';
@@ -261,6 +262,7 @@ export default class AttachesTool {
 
       this.data = {
         file: {
+          ...body.file,
           url,
           extension: name.split('.').pop(),
           name,
@@ -383,12 +385,13 @@ export default class AttachesTool {
    */
   set data({ file, title }) {
     this._data = Object.assign({}, {
-      file: {
-        url: (file && file.url) || this._data.file.url,
-        name: (file && file.name) || this._data.file.name,
-        extension: (file && file.extension) || this._data.file.extension,
-        size: (file && file.size) || this._data.file.size
-      },
+      file: file || {},
+      // file: {
+        // url: (file && file.url) || this._data.file.url,
+        // name: (file && file.name) || this._data.file.name,
+        // extension: (file && file.extension) || this._data.file.extension,
+        // size: (file && file.size) || this._data.file.size
+      // },
       title: title || this._data.title
     });
   }

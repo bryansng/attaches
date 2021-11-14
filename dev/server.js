@@ -85,6 +85,7 @@ class ServerExample {
         responseJson.success = 1;
         responseJson.file = {
           url: file.path,
+          title: file.name,
           name: file.name,
           size: file.size
         };
